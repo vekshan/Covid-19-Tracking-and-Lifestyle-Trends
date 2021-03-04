@@ -1,35 +1,7 @@
 PHU_Location_surrogate_key,PHU_Location_ID,PHU_Name,Address,City,Postal_Code,Province,URL,Latitude,Longitude
 0,2253,Peel Public Health,7120 Hurontario Street,Mississauga,L5W 1N4,ON,www.peelregion.ca/health/,43.6474713,-79.7088933
 1,2236,Halton Region Health Department,1151 Bronte Road,Oakville,L6M 3Ll,ON,www.halton.ca/For-Residents/Public-Health/ ,43.41399692,-79.74479581
-2,2241,"Kingston, Frontenac and Lennox & Addington Public Health",221 Portsmouth Avenue,Kingston,K7M 1V5,ON,www.kflaph.ca,44.2278735,-76.5252108
-3,2270,York Region Public Health Services,17250 Yonge Street,Newmarket,L3Y 6Z1,ON,www.york.ca/wps/portal/yorkhome/health/ ,44.048023,-79.480239
-4,2237,Hamilton Public Health Services,"110 King St. West, 2nd Floor",Hamilton,L8P 4S6,ON,www.hamilton.ca/publichealth,43.2576311,-79.87134089
-5,2233,Grey Bruce Health Unit,101 17th Street East,Owen Sound,N4K 0A5,ON,www.publichealthgreybruce.on.ca/,44.57619612,-80.94097993
-6,2266,Wellington-Dufferin-Guelph Public Health,160 Chancellors Way,Guelph,N1G 0E1,ON,www.wdgpublichealth.ca,43.5248813,-80.2337433
-7,2230,Durham Region Health Department,605 Rossland Road East,Whitby,L1N 0B2,ON,www.durham.ca/en/health-and-wellness/health-and-wellness.aspx,43.898604999999996,-78.940341
-8,3895,Toronto Public Health,"277 Victoria Street, 5th Floor",Toronto,M5B 1W2,ON,www.toronto.ca/community-people/health-wellness-care/,43.65659125,-79.37935801
-9,2262,Thunder Bay District Health Unit,999 Balmoral Street,Thunder Bay,P7B 6E7,ON,www.tbdhu.com,48.4005716,-89.25885079999999
-10,2260,Simcoe Muskoka District Health Unit,15 Sperling Drive,Barrie,L4M 6K9,ON,www.simcoemuskokahealth.org,44.41071258,-79.68630597
-11,2242,Lambton Public Health,160 Exmouth Street,Point Edward,N7T 7Z6,ON,www.lambtonhealth.on.ca,42.98641646,-82.40480836
-12,2235,"Haliburton, Kawartha, Pine Ridge District Health Unit",200 Rose Glen Road,Port Hope,L1A 3V6,ON,www.hkpr.on.ca/,43.96817279,-78.28579239
-13,2256,Porcupine Health Unit,169 Pine Street South,Timmins,P4N 8B7,ON,www.porcupinehu.on.ca,48.47251,-81.32875
-14,4913,Southwestern Public Health,1230 Talbot Street,St. Thomas,N5P 1G9,ON,www.swpublichealth.ca,42.77780366,-81.15115646
-15,2257,Renfrew County and District Health Unit,7 International Drive,Pembroke,K8A 6W5,ON,www.rcdhu.com,45.799406,-77.118727
-16,2255,Peterborough Public Health,185 King Street,Peterborough,K9J 2R8,ON,www.peterboroughpublichealth.ca,44.30163229,-78.32134748
-17,2251,Ottawa Public Health,100 Constellation Drive,Ottawa,K2G 6J8,ON,www.ottawapublichealth.ca,45.3456651,-75.7639122
-18,2265,"Region of Waterloo, Public Health",99 Regina Street South,Waterloo,N2J 4V3,ON,www.regionofwaterloo.ca,43.46287573,-80.52091315
-19,2249,Northwestern Health Unit,210 First Street North ,Kenora,P9N 2K4,ON,www.nwhu.on.ca,49.76961482,-94.48825435
-20,5183,Huron Perth District Health Unit,653 West Gore Street,Stratford,N5A 1L4,ON,www.hpph.ca,43.3686615,-81.00191283
-21,2244,Middlesex-London Health Unit,50 King Street,London,N6A 5L7,ON,www.healthunit.com,42.98146842,-81.25401572
-22,2238,Hastings and Prince Edward Counties Health Unit,179 North Park Street,Belleville,K8P 4P1,ON,www.hpePublicHealth.ca,44.18667362,-77.39144554
-23,2258,Eastern Ontario Health Unit,1000 Pitt Street,Cornwall,K6J 5T1,ON,www.eohu.ca,45.02915233,-74.73629779
-24,2234,Haldimand-Norfolk Health Unit,12 Gilbertson Drive,Simcoe,N3Y 4N5,ON,www.hnhu.org,42.84782526,-80.30381491
-25,2240,Chatham-Kent Health Unit,435 Grand Avenue West,Chatham,N7M 5L8,ON,www.ckphu.com,42.403861,-82.208561
-26,2268,Windsor-Essex County Health Unit,1005 Ouellette Avenue,Windsor,N9A 4J8,ON,www.wechu.org,42.3087965,-83.0336705
-27,2246,Niagara Region Public Health Department,1815 Sir Isaac Brock Way,Thorold,L2V 4T7,ON,www.niagararegion.ca/health,43.1165366,-79.2412197
-28,2243,"Leeds, Grenville and Lanark District Health Unit",458 Laurier Boulevard,Brockville,K6V 7A3,ON,www.healthunit.org,44.61584261,-75.70283308
-29,2227,Brant County Health Unit,194 Terrace Hill Street,Brantford,N3R 1G7,ON,www.bchu.org/,43.151811,-80.27437415
-30,2226,Algoma Public Health Unit,294 Willow Avenue,Sault Ste. Marie,P6B 0A9,ON,www.algomapublichealth.com,46.5323728,-84.3148358
-31,2261,Sudbury & District Health Unit,1300 Paris Street,Sudbury,P3E 3A3,ON,www.phsd.ca,46.46609195,-80.99805884
-32,2247,North Bay Parry Sound District Health Unit,345 Oak Street West,North Bay,P1B 2T2,ON,www.myhealthunit.ca ,46.31320706,-79.46784050000001
-33,2263,Timiskaming Health Unit,"247 Whitewood Avenue, Unit 43",New Liskeard,P0J 1P0,ON,www.timiskaminghu.com,47.5092835,-79.681632
+2,2270,York Region Public Health Services,17250 Yonge Street,Newmarket,L3Y 6Z1,ON,www.york.ca/wps/portal/yorkhome/health/ ,44.048023,-79.480239
+3,2230,Durham Region Health Department,605 Rossland Road East,Whitby,L1N 0B2,ON,www.durham.ca/en/health-and-wellness/health-and-wellness.aspx,43.898604999999996,-78.940341
+4,3895,Toronto Public Health,"277 Victoria Street, 5th Floor",Toronto,M5B 1W2,ON,www.toronto.ca/community-people/health-wellness-care/,43.65659125,-79.37935801
+5,2251,Ottawa Public Health,100 Constellation Drive,Ottawa,K2G 6J8,ON,www.ottawapublichealth.ca,45.3456651,-75.7639122
