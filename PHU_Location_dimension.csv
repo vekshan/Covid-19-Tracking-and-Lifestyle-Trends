@@ -1,0 +1,7 @@
+PHU_Location_surrogate_key,PHU_Location_ID,PHU_Name,Address,City,Postal_Code,Province,URL,Latitude,Longitude
+0,2253,Peel Public Health,7120 Hurontario Street,Mississauga,L5W 1N4,ON,www.peelregion.ca/health/,43.6474713,-79.7088933
+1,2236,Halton Region Health Department,1151 Bronte Road,Oakville,L6M 3Ll,ON,www.halton.ca/For-Residents/Public-Health/ ,43.41399692,-79.74479581
+2,2270,York Region Public Health Services,17250 Yonge Street,Newmarket,L3Y 6Z1,ON,www.york.ca/wps/portal/yorkhome/health/ ,44.048023,-79.480239
+3,2230,Durham Region Health Department,605 Rossland Road East,Whitby,L1N 0B2,ON,www.durham.ca/en/health-and-wellness/health-and-wellness.aspx,43.898604999999996,-78.940341
+4,3895,Toronto Public Health,"277 Victoria Street, 5th Floor",Toronto,M5B 1W2,ON,www.toronto.ca/community-people/health-wellness-care/,43.65659125,-79.37935801
+5,2251,Ottawa Public Health,100 Constellation Drive,Ottawa,K2G 6J8,ON,www.ottawapublichealth.ca,45.3456651,-75.7639122
