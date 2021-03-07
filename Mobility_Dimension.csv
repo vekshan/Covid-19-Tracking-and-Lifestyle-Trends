@@ -1,4 +1,4 @@
-Mobility_Surrogate_Key,Metro_Area,Province,Subregion,Retail_And_Recreation,Grocery_And_Pharmacy,Parks,Transit_Stations,Workplaces,Residential
+Mobility_surrogate_key,Metro_Area,Province,Subregion,Retail_And_Recreation,Grocery_And_Pharmacy,Parks,Transit_Stations,Workplaces,Residential
 0,,Ontario,Ottawa Division,-60.0,-57.0,194.0,-68.0,-79.0,19.0
 1,,Ontario,Ottawa Division,-26.0,-1.0,22.0,-62.0,-62.0,19.0
 2,,Ontario,Ottawa Division,-31.0,-4.0,84.0,-57.0,-58.0,17.0
