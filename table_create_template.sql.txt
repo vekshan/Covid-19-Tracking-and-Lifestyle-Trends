@@ -1,0 +1,95 @@
+
+create table location_dimension(
+location_surrogate_key int,
+location_key int,
+street_name varchar,
+intersection_1 varchar,
+intersection_2 varchar,
+longitude float,
+latiude float,
+primary key (location_surrogate_key)
+);
+
+
+create table accident_dimension(
+accident_key int,
+accident_ID int,
+environment varchar,
+road_surface varchar,
+traffic_control varchar,
+visibility varchar,
+impact_type varchar,
+primary key (accident_key)
+);
+
+
+create table time_dimension(
+time_key int,
+time_ID int,
+time_of_day time,
+Hour int,
+Quarter-hour varchar,
+Minute varchar,
+day_time_name varchar,
+day_night varchar,
+primary key (time_key)
+);
+
+
+create table date_dimension(
+date_key int,
+date_ID int,
+date date,
+year_month_num int,
+Calendar_quarter varchar,
+Month_num int,
+Month_name varchar,
+Month_short_name varchar,
+Week_num int,
+Day_num_of_year int,
+Day_num_of_month int,
+Day_num_of_week int,
+Day_name varchar,
+Day_short_name varchar,
+Quarter int,
+YearQuarterNum int,
+Day_num_of_quarter int,
+primary key (date_key)
+);
+
+
+create table weather_dimension(
+weather_key int,
+weather_ID int,
+mean_tempreture float,
+min_tempreture float,
+max_tempreture float,
+total_precipitation float,
+total_rain float,
+total_snow float,
+direction_max_gust float,
+speed_max_gust float,
+cooling_degree_days float,
+heating_degree_days float
+primary key (weather_key)
+);
+
+
+create table fact_table(
+location_key int,
+accident_key int,
+date_key int,
+time_key int,
+weather_key int,
+is_fatal bool,
+is_intersection bool,
+foreign key  (location_key) references location_dimension(location_surrogate_key),
+foreign key  (accident_key) references accident_dimension(accident_key),
+foreign key  (date_key)  references date_dimension(date_key),
+foreign key  (time_key) references time_dimension(time_key),
+foreign key  (weather_key) references weather_dimension(weather_key)
+);
+
+
+
+

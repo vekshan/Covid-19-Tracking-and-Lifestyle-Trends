@@ -1,0 +1,63 @@
+create table Weather_Dimension(
+Weather_Surrogate_Key int,
+Station_Name varchar,
+Daily_High_Temperature float,
+Daily_Low_Temperature float,
+Precipitation float,
+primary key (Weather_Surrogate_Key)
+);
+
+create table Mobility_Dimension(
+Mobility_Surrogate_Key int,
+Metro_Area varchar,
+Province varchar,
+Subregion varchar,
+Retail_And_Recreation int,
+Grocery_And_Pharmacy int,
+Parks int,
+Transit_Stations int,
+Workplaces int,
+Residential int,
+primary key (Mobility_Surrogate_Key)
+);
+
+create table Date_Dimension(
+Date_surrogate_key int,
+Full_Date date,
+Day int,
+Month int,
+Year int,
+Day_Of_Year int,
+Day_Of_Week int,
+Week_In_Year int,
+Quarter int,
+Is_Weekend bool, 
+Is_Week_Day bool, 
+Is_Holiday bool, 
+Holiday_name varchar,
+Season varchar,
+primary key (Date_surrogate_key)
+);
+
+create table Patient_Dimension(
+Patient_surrogate_key int,
+Gender varchar,
+Age_Group varchar,
+Acquisition_Group varchar,
+Outbreak_Related bool, 
+primary key (Patient_surrogate_key)
+);
+
+create table PHU_Location_Dimension(
+PHU_Location_surrogate_key int,
+PHU_Location_ID int,
+PHU_Name varchar,
+Address varchar,
+City varchar,
+Postal_Code varchar,
+Province varchar,
+URL varchar,
+Latitude float,
+Longitude float,
+primary key (PHU_Location_surrogate_key)
+);
