@@ -61,3 +61,32 @@ Latitude float,
 Longitude float,
 primary key (PHU_Location_surrogate_key)
 );
+
+create table Special_Measures_Dimension(
+Special_Measures_surrogate_key int,
+Title varchar,
+Description varchar,
+Tag_1 varchar,
+Tag_2 varchar,
+Start_date date,
+End_date date,
+primary key(Special_Measures_surrogate_key)
+);
+
+## Create view tables based on Date_Dimension table:
+
+create view Onset_Date_Dimension as
+select *
+from Date_Dimension;
+
+create view Reported_Date_Dimension as
+select *
+from Date_Dimension
+
+create view Test_Date_Dimension as
+select *
+from Date_Dimension
+
+create view Specimen_Date_Dimension as
+select *
+from Date_Dimension
