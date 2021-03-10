@@ -42,6 +42,7 @@ primary key (date_surrogate_key)
 
 create table patient_dimension(
 patient_surrogate_key int,
+patient_id int,
 gender varchar,
 age_group varchar,
 acquisition_group varchar,
