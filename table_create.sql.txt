@@ -26,6 +26,7 @@ primary key (mobility_surrogate_key)
 create table date_dimension(
 date_surrogate_key int,
 full_date date,
+week_day_name varchar,
 day int,
 month int,
 year int,
