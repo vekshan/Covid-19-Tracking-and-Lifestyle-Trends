@@ -1,4 +1,4 @@
-## Create all dimension tables except Fact table:
+-- Create all dimension tables except Fact table:
 
 create table weather_dimension(
 weather_surrogate_key int,
@@ -75,7 +75,7 @@ end_date date,
 primary key(special_measures_surrogate_key)
 );
 
-## Create Views based on date_dimension table:
+-- Create Views based on date_dimension table:
 
 create view onset_date_dimension as
 select *
@@ -93,7 +93,7 @@ create view specimen_date_dimension as
 select *
 from date_dimension
 
-## Create Fact table:
+-- Create Fact table:
 
 create table covid19_tracking_fact_table(
 onset_date_surrogate_key int,
