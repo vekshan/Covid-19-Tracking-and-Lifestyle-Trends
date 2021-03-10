@@ -1,5 +1,3 @@
--- Create all dimension tables except Fact table:
-
 create table weather_dimension(
 weather_surrogate_key int,
 station_name varchar,
@@ -76,8 +74,6 @@ end_date date,
 primary key(special_measures_surrogate_key)
 );
 
--- Create Views based on date_dimension table:
-
 create view onset_date_dimension as
 select *
 from date_dimension;
@@ -93,8 +89,6 @@ from date_dimension
 create view specimen_date_dimension as
 select *
 from date_dimension
-
--- Create Fact table:
 
 create table covid19_tracking_fact_table(
 onset_date_surrogate_key int,
