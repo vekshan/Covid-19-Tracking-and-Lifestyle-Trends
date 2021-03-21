@@ -158,6 +158,34 @@ RANGE BETWEEN  '7 days' PRECEDING
 AND '7 days' FOLLOWING)
 
 
+
+/*  */
+
+SELECT
+l.phu_name,
+d.season,
+d.full_date,
+p.acquisition_group,
+COUNT(p.patient_surrogate_key) AS total_cases
+FROM 
+covid19_tracking_fact_table f 
+INNER JOIN 
+patient_dimension p
+ON f.patient_surrogate_key = p.patient_surrogate_key
+INNER JOIN 
+phu_location_dimension l
+ON
+f.phu_location_surrogate_key = l.phu_location_surrogate_key
+INNER JOIN 
+onset_date_dimension d
+ON
+f.onset_date_surrogate_key = d.date_surrogate_key
+WHERE
+p.acquisition_group in ('CS', 'CC')
+GROUP BY
+l.phu_name, d.full_date, d.season, p.acquisition_group
+ORDER BY d.full_date
+
 /* To be considered */
 
 SELECT
