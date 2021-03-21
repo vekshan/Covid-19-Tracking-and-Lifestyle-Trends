@@ -55,7 +55,8 @@ GROUP BY
 l.phu_name
 
 /*  */
-SELECT s.title AS special_measure, 
+SELECT
+s.title AS special_measure, 
 s.description,
 s.start_date,
 s.end_date,
@@ -65,18 +66,11 @@ SUM(f.fatal ::INT) AS total_cases_fatal,
 COUNT(*) AS total_cases
 FROM 
 covid19_tracking_fact_table f,
-special_measures_dimension s,
-onset_date_dimension d,
-phu_location_dimension l
+special_measures_dimension s
 WHERE
-f.phu_location_surrogate_key = l.phu_location_surrogate_key
-AND
-d.full_date BETWEEN s.start_date AND s.end_date
-GROUP BY
-s.special_measures_surrogate_key
+f.special_measures_surrogate_key = s.special_measures_surrogate_key 
+GROUP BY s.special_measures_surrogate_key
 
-
--- c
 /*  */
 SELECT
 d.full_date,

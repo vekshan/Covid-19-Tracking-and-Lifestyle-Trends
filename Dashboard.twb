@@ -5,8 +5,10 @@
   <document-format-change-manifest>
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
   <preferences>
@@ -14,39 +16,309 @@
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
-    <datasource caption='group_5' inline='true' name='federated.1psgw1n0rje3u41bzztkt1d20icg' version='18.1'>
+    <datasource caption='Custom SQL Query (group_5)' inline='true' name='federated.1psgw1n0rje3u41bzztkt1d20icg' version='18.1'>
       <connection class='federated'>
         <named-connections>
           <named-connection caption='www.eecs.uottawa.ca' name='postgres.149w0qg0z6747x14zbtxh1gk594u'>
             <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' username='vbund062' />
           </named-connection>
         </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>special_measure</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[special_measure]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>special_measure</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[start_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>start_date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[end_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>end_date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_resolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_resolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_resolved</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_unresolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_unresolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_unresolved</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_fatal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_fatal]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_fatal</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
       </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='color_blind_10_0' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </map>
+            <map to='#fc7d0b'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
-      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_FA4A42875CE74DB4B29F3CB3EF3F5693'>
+            <properties context=''>
+              <relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
   </datasources>
+  <actions>
+    <action caption='Highlight 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source type='sheet' worksheet='Sheet 1' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Measure Names' />
+        <param name='target' value='Sheet 1' />
+      </command>
+    </action>
+  </actions>
   <worksheets>
     <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
       <table>
         <view>
-          <datasources />
+          <datasources>
+            <datasource caption='Custom SQL Query (group_5)' name='federated.1psgw1n0rje3u41bzztkt1d20icg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1psgw1n0rje3u41bzztkt1d20icg'>
+            <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[special_measure]' derivation='None' name='[none:special_measure:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[special_measure]' role='dimension' type='nominal' />
+            <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+            <_.fcp.ObjectModelTableType.false...column caption='Custom SQL Query' datatype='integer' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]</column>
+          </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' value='177' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+          </style-rule>
+        </style>
         <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' />
+            </encodings>
+            <reference-line axis-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' enable-instant-analytics='true' formula='total' id='refline1' label-type='automatic' scope='per-cell' value-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' z-order='1' />
+            <reference-line axis-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' enable-instant-analytics='false' formula='sum' id='refline2' label-type='value' scope='per-cell' value-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' z-order='2' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='753' />
+                <format attr='maxwidth' value='753' />
+                <format attr='minheight' value='80' />
+                <format attr='maxheight' value='80' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows />
-        <cols />
+        <rows>[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]</rows>
+        <cols>[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]</cols>
       </table>
       <simple-id uuid='{EBA177DF-05F2-4C5A-9EB0-966D0A4A0DB4}' />
     </worksheet>
@@ -59,6 +331,7 @@
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
+            <card type='measures' />
           </strip>
         </edge>
         <edge name='top'>
@@ -72,8 +345,120 @@
             <card type='title' />
           </strip>
         </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' type='highlighter' />
+          </strip>
+          <strip size='100'>
+            <card pane-specification-id='2' param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
       </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:phu_name:nk]</field>
+            <field>[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
       <simple-id uuid='{F3436F63-53C8-4525-82E5-8272B2C872AA}' />
     </window>
   </windows>
+  <thumbnails>
+    <thumbnail height='167' name='Sheet 1' width='192'>
+      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
+      xb0y0l9+ge25bdr2gobybFLinm7epzwMJ6ynLJ2EhJPc82w8q7wcaCjR8+YbCWjWryOkw8Uo
+      FK7q3ybjh4+wofM1aHqmoZzs97fw9y+d8fdsWdtI7gDCShTOHkln6LIYHvLSokGD1ushYpYN
+      Jf3I2Q4XRlOuppN81J3lj/p3vRBZD5R9sp8Cn5W88vKv+NmPWhZOkwAIK7lIwRkvpgW0voyd
+      AqbhdabAbNECM8pV9EkZeD0e0fmSlbdg1PwVRMwY3W7BYAmAsJKbVBldcG57IWudcTFWcbNd
+      e4XifX/lX5OfItzHdpNZ5TOAsB5nZ4a3e3E4zs6tX7mSFkt0GqCdxerXvW06l1vuAMJ6qqq4
+      0e7FG1RVtX7FIzSOxMQE1gScZc+B4m4unNw7JADCSobhrL1OVdulFY1VXNc6M6xdey1TItby
+      k4KtJFth+LMjEgBhJWPx8Ssh52Tri9lwMocSPx8sVprSuKNbpaNqewLpnRTj6U0SAGElGibN
+      D6F6ZwIHS4woKBhLDpKws5qQ+W3rqJlxmcuTUT8k4209V23QF5IJMcKqDIV6kt85xOnKegaN
+      vIcFj0eiG282NGqx6qTC1YMv8ebXi4iL6o3vA8rQb4wl7Ur7n0gAhKpJF0iomgRAqJoEQKia
+      BEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRA
+      qJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKiaBEComgRAqJoEQKia
+      BEComgRAqJoEQKiaBEComgRAqNr/A4rIDFdcgOiGAAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
 </workbook>
