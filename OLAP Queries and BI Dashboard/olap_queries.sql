@@ -291,7 +291,7 @@ AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.workpl
 AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.residential ELSE 0 END) AS residential
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, date_dimension AS D
 WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.reported_date_surrogate_key = D.date_surrogate_key AND
-M.subregion in ('Ottawa Division', 'Toronto Division') AND 
+M.subregion in ('Ottawa Division', 'Toronto Division') AND (D.full_date >= '2020-07-03' AND D.full_date <= '2020-11-03')
 GROUP BY (D.full_date, M.subregion)
 ORDER BY D.full_date
 
