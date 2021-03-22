@@ -26,9 +26,8 @@ s.title = 'Stage 3 Modified'
 GROUP BY
 l.phu_name
 
-
-
 /*  */
+
 SELECT
 l.phu_name,
 COUNT(p.patient_surrogate_key) AS total_cases_fatal
@@ -55,6 +54,7 @@ GROUP BY
 l.phu_name
 
 /*  */
+
 SELECT
 s.title AS special_measure, 
 s.description,
@@ -72,6 +72,7 @@ f.special_measures_surrogate_key = s.special_measures_surrogate_key
 GROUP BY s.special_measures_surrogate_key
 
 /*  */
+
 SELECT
 d.full_date,
 l.city,
@@ -95,11 +96,10 @@ ORDER BY d.full_date
 RANGE BETWEEN  '15 days' PRECEDING
 AND '15 days' FOLLOWING)
 
-
 /*Tableau */
 
-
 /*  */
+
 SELECT
 s.title AS special_measure, 
 s.description,
@@ -117,6 +117,7 @@ f.special_measures_surrogate_key = s.special_measures_surrogate_key
 GROUP BY s.special_measures_surrogate_key
 
 /*  */
+
 SELECT
 s.title AS special_measure, 
 s.description,
@@ -134,6 +135,7 @@ f.special_measures_surrogate_key = s.special_measures_surrogate_key
 GROUP BY s.special_measures_surrogate_key
 
 /*  */
+
 SELECT
 d.full_date,
 TO_CHAR(TO_DATE(d.month::text, 'MM'), 'Month') AS onset_month,
@@ -156,8 +158,6 @@ WINDOW W AS
 (ORDER BY d.full_date
 RANGE BETWEEN  '7 days' PRECEDING
 AND '7 days' FOLLOWING)
-
-
 
 /*  */
 
@@ -275,13 +275,25 @@ WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogat
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.daily_low_temperature 
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.daily_high_temperature)
 
-/*Combined OLAP operations*/
+/*Combined OLAP Operations Query (Outcomes and Weather Conditions)*/
 SELECT M.subregion, W.daily_low_temperature, W.precipitation, SUM(F.resolved::INT) AS total_resolved_cases, 
 SUM(F.unresolved::INT) AS total_unresolved_cases, SUM(F.fatal::INT) AS total_fatal_cases
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, weather_dimension as W
 WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogate_key = W.weather_surrogate_key
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.daily_low_temperature <= 4 AND W.precipitation >= 0
 GROUP BY (M.subregion, W.daily_low_temperature, W.precipitation)
+
+/*Combined OLAP Operations Query (Mobility Levels Contrast Between Ottawa and Toronto)*/
+SELECT D.full_date, M.subregion, AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.retail_and_recreation ELSE 0 END) AS retail_and_recreation,
+AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.parks ELSE 0 END) AS parks, 
+AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.transit_stations ELSE 0 END) AS transit_stations,
+AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.workplaces ELSE 0 END) AS workplaces,
+AVG(CASE WHEN F.reported_date_surrogate_key = D.date_surrogate_key THEN M.residential ELSE 0 END) AS residential
+FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, date_dimension AS D
+WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.reported_date_surrogate_key = D.date_surrogate_key AND
+M.subregion in ('Ottawa Division', 'Toronto Division') AND 
+GROUP BY (D.full_date, M.subregion)
+ORDER BY D.full_date
 
 /*Iceberg Query (Top-N)*/
 SELECT D.full_date, SUM(F.resolved::INT) AS total_resolved_cases
