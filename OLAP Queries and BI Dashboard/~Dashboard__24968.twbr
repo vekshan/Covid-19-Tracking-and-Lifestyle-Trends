@@ -1,0 +1,2559 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20204.21.0217.1203                               -->
+<workbook source-build='2020.4.2 (20204.21.0217.1203)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Mobility Levels vs. Cities' inline='true' name='federated.1bgr3li0mge86t1gv92x708mf8fh' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.03q1d6806hrr3w119wvs71wgvpxe'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='ssekh066' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.03q1d6806hrr3w119wvs71wgvpxe' name='Custom SQL Query' type='text'>SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D&#13;
+WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND&#13;
+M.subregion in (&apos;Ottawa Division&apos;, &apos;Toronto Division&apos;)&#13;
+GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)&#13;
+ORDER BY D.full_date</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.03q1d6806hrr3w119wvs71wgvpxe' name='Custom SQL Query' type='text'>SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D&#13;
+WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND&#13;
+M.subregion in (&apos;Ottawa Division&apos;, &apos;Toronto Division&apos;)&#13;
+GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)&#13;
+ORDER BY D.full_date</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>full_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[full_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>full_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subregion</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[subregion]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>subregion</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>retail_and_recreation</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[retail_and_recreation]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>retail_and_recreation</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>parks</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[parks]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>parks</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transit_stations</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[transit_stations]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>transit_stations</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>workplaces</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[workplaces]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>workplaces</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>residential</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[residential]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>residential</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:parks:qk]&quot;' value='Parks' />
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:residential:qk]&quot;' value='Residential' />
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:retail_and_recreation:qk]&quot;' value='Retail &amp; Recreation' />
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk]&quot;' value='Total Cases' />
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:transit_stations:qk]&quot;' value='Transit Stations' />
+          <alias key='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:workplaces:qk]&quot;' value='Workplaces' />
+        </aliases>
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_ADB718A4F505494687B2257322FA345D]' role='measure' type='quantitative' />
+      <column datatype='real' name='[parks]' role='measure' type='quantitative' />
+      <column datatype='real' name='[residential]' role='measure' type='quantitative' />
+      <column datatype='real' name='[retail_and_recreation]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+      <column datatype='real' name='[transit_stations]' role='measure' type='quantitative' />
+      <column datatype='real' name='[workplaces]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[_ADB718A4F505494687B2257322FA345D]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_ADB718A4F505494687B2257322FA345D:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[parks]' derivation='Sum' name='[sum:parks:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[residential]' derivation='Sum' name='[sum:residential:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[retail_and_recreation]' derivation='Sum' name='[sum:retail_and_recreation:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[transit_stations]' derivation='Sum' name='[sum:transit_stations:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[workplaces]' derivation='Sum' name='[sum:workplaces:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Dashboard.twb Files/Custom SQL Query (group_5) 1.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/23/2021 05:32:11 AM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Mobility Levels vs. Cities' increment-value='%null%' refresh-type='create' rows-inserted='246' timestamp-start='2021-03-23 05:32:11.704' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>full_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[full_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>full_date</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>123</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subregion</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[subregion]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>subregion</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>retail_and_recreation</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[retail_and_recreation]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>retail_and_recreation</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>38</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>parks</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[parks]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>parks</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>135</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>transit_stations</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[transit_stations]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>transit_stations</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>workplaces</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[workplaces]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>workplaces</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>44</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>residential</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[residential]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>residential</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>21</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>126</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_ADB718A4F505494687B2257322FA345D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-aliased-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='color_blind_10_0' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:parks:qk]&quot;</bucket>
+            </map>
+            <map to='#57606c'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk]&quot;</bucket>
+            </map>
+            <map to='#5fa2ce'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:transit_stations:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:retail_and_recreation:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[__tableau_internal_object_id__].[cnt:_ADB718A4F505494687B2257322FA345D:qk]&quot;</bucket>
+            </map>
+            <map to='#c85200'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:workplaces:qk]&quot;</bucket>
+            </map>
+            <map to='#fc7d0b'>
+              <bucket>&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:residential:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_ADB718A4F505494687B2257322FA345D'>
+            <properties context=''>
+              <relation connection='postgres.03q1d6806hrr3w119wvs71wgvpxe' name='Custom SQL Query' type='text'>SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D&#13;
+WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND&#13;
+M.subregion in (&apos;Ottawa Division&apos;, &apos;Toronto Division&apos;)&#13;
+GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)&#13;
+ORDER BY D.full_date</relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Cases Vs. Moving Avg' inline='true' name='federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.149w0qg0z6747x14zbtxh1gk594u (copy 2)'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='ssekh066' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy 2)' name='Custom SQL Query' type='text'>SELECT&#13;
+d.full_date,&#13;
+TO_CHAR(TO_DATE(d.month::text, &apos;MM&apos;), &apos;Month&apos;) AS onset_month,&#13;
+f.total_cases,&#13;
+AVG(f.total_cases) OVER W AS moving_average&#13;
+FROM &#13;
+(&#13;
+ SELECT onset_date_surrogate_key, phu_location_surrogate_key, COUNT(*) as total_cases &#13;
+ FROM covid19_tracking_fact_table &#13;
+ GROUP BY (onset_date_surrogate_key, phu_location_surrogate_key)&#13;
+) AS f,&#13;
+phu_location_dimension l,&#13;
+onset_date_dimension d&#13;
+WHERE&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+AND&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+GROUP BY d.month, f.total_cases, d.full_date&#13;
+WINDOW W AS &#13;
+(ORDER BY d.full_date&#13;
+RANGE BETWEEN  &apos;7 days&apos; PRECEDING&#13;
+AND &apos;7 days&apos; FOLLOWING)</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy 2)' name='Custom SQL Query' type='text'>SELECT&#13;
+d.full_date,&#13;
+TO_CHAR(TO_DATE(d.month::text, &apos;MM&apos;), &apos;Month&apos;) AS onset_month,&#13;
+f.total_cases,&#13;
+AVG(f.total_cases) OVER W AS moving_average&#13;
+FROM &#13;
+(&#13;
+ SELECT onset_date_surrogate_key, phu_location_surrogate_key, COUNT(*) as total_cases &#13;
+ FROM covid19_tracking_fact_table &#13;
+ GROUP BY (onset_date_surrogate_key, phu_location_surrogate_key)&#13;
+) AS f,&#13;
+phu_location_dimension l,&#13;
+onset_date_dimension d&#13;
+WHERE&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+AND&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+GROUP BY d.month, f.total_cases, d.full_date&#13;
+WINDOW W AS &#13;
+(ORDER BY d.full_date&#13;
+RANGE BETWEEN  &apos;7 days&apos; PRECEDING&#13;
+AND &apos;7 days&apos; FOLLOWING)</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>full_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[full_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>full_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>onset_month</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[onset_month]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>onset_month</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>moving_average</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[moving_average]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>moving_average</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <scale>0</scale>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk]&quot;' value='15 Day Moving Average' />
+          <alias key='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]&quot;' value='Total Cases' />
+        </aliases>
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+      <column datatype='real' name='[moving_average]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[moving_average]' derivation='Sum' name='[sum:moving_average:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Datasources/Cases Vs. Moving Avg.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/23/2021 03:32:50 AM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh increment-key='' incremental-updates='false'>
+            <refresh-event add-from-file-path='Cases Vs. Moving Avg' increment-value='%null%' refresh-type='create' rows-inserted='691' timestamp-start='2021-03-23 03:32:50.595' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>full_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[full_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>full_date</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>123</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>onset_month</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[onset_month]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>onset_month</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>171</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>moving_average</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[moving_average]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>moving_average</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>123</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='color_blind_10_0' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk]&quot;</bucket>
+            </map>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases_resolved:qk]&quot;</bucket>
+            </map>
+            <map to='#57606c'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]&quot;</bucket>
+            </map>
+            <map to='#fc7d0b'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases_fatal:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_FA4A42875CE74DB4B29F3CB3EF3F5693'>
+            <properties context=''>
+              <relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy 2)' name='Custom SQL Query' type='text'>SELECT&#13;
+d.full_date,&#13;
+TO_CHAR(TO_DATE(d.month::text, &apos;MM&apos;), &apos;Month&apos;) AS onset_month,&#13;
+f.total_cases,&#13;
+AVG(f.total_cases) OVER W AS moving_average&#13;
+FROM &#13;
+(&#13;
+ SELECT onset_date_surrogate_key, phu_location_surrogate_key, COUNT(*) as total_cases &#13;
+ FROM covid19_tracking_fact_table &#13;
+ GROUP BY (onset_date_surrogate_key, phu_location_surrogate_key)&#13;
+) AS f,&#13;
+phu_location_dimension l,&#13;
+onset_date_dimension d&#13;
+WHERE&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+AND&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+GROUP BY d.month, f.total_cases, d.full_date&#13;
+WINDOW W AS &#13;
+(ORDER BY d.full_date&#13;
+RANGE BETWEEN  &apos;7 days&apos; PRECEDING&#13;
+AND &apos;7 days&apos; FOLLOWING)</relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Cases vs Measure' inline='true' name='federated.1psgw1n0rje3u41bzztkt1d20icg' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.149w0qg0z6747x14zbtxh1gk594u'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' username='vbund062' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>special_measure</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[special_measure]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>special_measure</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[start_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>start_date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[end_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>end_date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_resolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_resolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_resolved</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_unresolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_unresolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_unresolved</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_fatal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_fatal]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_fatal</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+      <column datatype='string' name='[special_measure]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[special_measure]' derivation='None' name='[none:special_measure:nk]' pivot='key' type='nominal' />
+      <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Datasources/Cases vs Measure.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/22/2021 08:49:03 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Cases vs Measure' increment-value='%null%' refresh-type='create' rows-inserted='4' timestamp-start='2021-03-22 20:49:03.202' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>special_measure</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[special_measure]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>special_measure</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>description</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[description]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>description</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>start_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[start_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>start_date</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>end_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[end_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>end_date</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases_resolved</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases_resolved]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases_resolved</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases_unresolved</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases_unresolved]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases_unresolved</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases_fatal</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases_fatal]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases_fatal</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='color_blind_10_0' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases:qk]&quot;</bucket>
+            </map>
+            <map to='#57606c'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </map>
+            <map to='#fc7d0b'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:special_measure:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Stage 2&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Stage 3 Modified&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Stage 3&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Stage 2 Modified&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_FA4A42875CE74DB4B29F3CB3EF3F5693'>
+            <properties context=''>
+              <relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u' name='Custom SQL Query' type='text'>SELECT&#13;
+s.title AS special_measure, &#13;
+s.description,&#13;
+s.start_date,&#13;
+s.end_date,&#13;
+SUM(f.resolved ::INT) AS total_cases_resolved,&#13;
+SUM(f.unresolved ::INT) AS total_cases_unresolved,&#13;
+SUM(f.fatal ::INT) AS total_cases_fatal,&#13;
+COUNT(*) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f,&#13;
+special_measures_dimension s&#13;
+WHERE&#13;
+f.special_measures_surrogate_key = s.special_measures_surrogate_key &#13;
+GROUP BY s.special_measures_surrogate_key</relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Cases vs Day and Acquisiton type' inline='true' name='federated.1psgw1n0rje3u41bzztkt1d20icg (copy)' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.149w0qg0z6747x14zbtxh1gk594u (copy)'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='ssekh066' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy)' name='Custom SQL Query' type='text'>SELECT&#13;
+l.phu_name,&#13;
+d.season,&#13;
+d.full_date,&#13;
+p.acquisition_group,&#13;
+COUNT(p.patient_surrogate_key) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f &#13;
+INNER JOIN &#13;
+patient_dimension p&#13;
+ON f.patient_surrogate_key = p.patient_surrogate_key&#13;
+INNER JOIN &#13;
+phu_location_dimension l&#13;
+ON&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+INNER JOIN &#13;
+onset_date_dimension d&#13;
+ON&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+WHERE&#13;
+p.acquisition_group in (&apos;CS&apos;, &apos;CC&apos;)&#13;
+GROUP BY&#13;
+l.phu_name, d.full_date, d.season, p.acquisition_group&#13;
+ORDER BY d.full_date</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy)' name='Custom SQL Query' type='text'>SELECT&#13;
+l.phu_name,&#13;
+d.season,&#13;
+d.full_date,&#13;
+p.acquisition_group,&#13;
+COUNT(p.patient_surrogate_key) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f &#13;
+INNER JOIN &#13;
+patient_dimension p&#13;
+ON f.patient_surrogate_key = p.patient_surrogate_key&#13;
+INNER JOIN &#13;
+phu_location_dimension l&#13;
+ON&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+INNER JOIN &#13;
+onset_date_dimension d&#13;
+ON&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+WHERE&#13;
+p.acquisition_group in (&apos;CS&apos;, &apos;CC&apos;)&#13;
+GROUP BY&#13;
+l.phu_name, d.full_date, d.season, p.acquisition_group&#13;
+ORDER BY d.full_date</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>phu_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[phu_name]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>phu_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>season</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[season]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>season</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>full_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[full_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>full_date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>acquisition_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[acquisition_group]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>acquisition_group</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+      <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Datasources/Cases vs Day and Acquisiton type.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/23/2021 04:49:28 PM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Cases vs Day and Acquisiton type' increment-value='%null%' refresh-type='create' rows-inserted='1357' timestamp-start='2021-03-23 16:49:28.243' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>phu_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[phu_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>phu_name</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>season</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[season]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>season</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>full_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[full_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>full_date</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>123</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>acquisition_group</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[acquisition_group]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>acquisition_group</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>87</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_FA4A42875CE74DB4B29F3CB3EF3F5693]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-aliased-fields='true' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='color_blind_10_0' type='palette'>
+            <map to='#1170aa'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases_resolved:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases:qk]&quot;</bucket>
+            </map>
+            <map to='#57606c'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+            </map>
+            <map to='#a3acb9'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </map>
+            <map to='#fc7d0b'>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases_fatal:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_FA4A42875CE74DB4B29F3CB3EF3F5693'>
+            <properties context=''>
+              <relation connection='postgres.149w0qg0z6747x14zbtxh1gk594u (copy)' name='Custom SQL Query' type='text'>SELECT&#13;
+l.phu_name,&#13;
+d.season,&#13;
+d.full_date,&#13;
+p.acquisition_group,&#13;
+COUNT(p.patient_surrogate_key) AS total_cases&#13;
+FROM &#13;
+covid19_tracking_fact_table f &#13;
+INNER JOIN &#13;
+patient_dimension p&#13;
+ON f.patient_surrogate_key = p.patient_surrogate_key&#13;
+INNER JOIN &#13;
+phu_location_dimension l&#13;
+ON&#13;
+f.phu_location_surrogate_key = l.phu_location_surrogate_key&#13;
+INNER JOIN &#13;
+onset_date_dimension d&#13;
+ON&#13;
+f.onset_date_surrogate_key = d.date_surrogate_key&#13;
+WHERE&#13;
+p.acquisition_group in (&apos;CS&apos;, &apos;CC&apos;)&#13;
+GROUP BY&#13;
+l.phu_name, d.full_date, d.season, p.acquisition_group&#13;
+ORDER BY d.full_date</relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Top-N Query' inline='true' name='federated.0gmwbeh1q4qq5v1ckdii11qtraj4' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.04j96st1847sr51enuzo9131hwx9'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='ssekh066' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.04j96st1847sr51enuzo9131hwx9' name='Custom SQL Query' type='text'>SELECT D.full_date, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D&#13;
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key&#13;
+GROUP BY D.full_date&#13;
+ORDER BY total_cases DESC&#13;
+LIMIT 5</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.04j96st1847sr51enuzo9131hwx9' name='Custom SQL Query' type='text'>SELECT D.full_date, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D&#13;
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key&#13;
+GROUP BY D.full_date&#13;
+ORDER BY total_cases DESC&#13;
+LIMIT 5</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>full_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[full_date]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>full_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_E5D7FF78F10743ADB54383D3D7ED4617]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_E5D7FF78F10743ADB54383D3D7ED4617]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_E5D7FF78F10743ADB54383D3D7ED4617]' role='measure' type='quantitative' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Dashboard.twb Files/Custom SQL Query (group_5).hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/23/2021 03:58:33 AM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='Top-N Query' increment-value='%null%' refresh-type='create' rows-inserted='5' timestamp-start='2021-03-23 03:58:33.597' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>full_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[full_date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>full_date</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_E5D7FF78F10743ADB54383D3D7ED4617]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_cases</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[total_cases]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>total_cases</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Custom SQL Query</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_E5D7FF78F10743ADB54383D3D7ED4617]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_E5D7FF78F10743ADB54383D3D7ED4617'>
+            <properties context=''>
+              <relation connection='postgres.04j96st1847sr51enuzo9131hwx9' name='Custom SQL Query' type='text'>SELECT D.full_date, COUNT(*) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D&#13;
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key&#13;
+GROUP BY D.full_date&#13;
+ORDER BY total_cases DESC&#13;
+LIMIT 5</relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Acquisition &amp; Age Group Vs Cases' inline='true' name='federated.0zm9ajp0mead8x1cw0x8t00rm7fi' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.01d1u7z03nrz4z19p3elk0xagzll'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='lnguy042' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.01d1u7z03nrz4z19p3elk0xagzll' name='Custom SQL Query' type='text'>Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, &#13;
+RANK () OVER ( &#13;
+		PARTITION BY p.age_group&#13;
+		ORDER BY COUNT(*) DESC&#13;
+	) as rank&#13;
+FROM&#13;
+covid19_tracking_fact_table f, &#13;
+patient_dimension p &#13;
+WHERE&#13;
+f.patient_surrogate_key = p.patient_surrogate_key&#13;
+AND acquisition_group != &apos;MISSING INFORMATION&apos;&#13;
+AND age_group != &apos;UNKNOWN&apos;&#13;
+GROUP BY&#13;
+(p.age_group, p.acquisition_group)</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.01d1u7z03nrz4z19p3elk0xagzll' name='Custom SQL Query' type='text'>Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, &#13;
+RANK () OVER ( &#13;
+		PARTITION BY p.age_group&#13;
+		ORDER BY COUNT(*) DESC&#13;
+	) as rank&#13;
+FROM&#13;
+covid19_tracking_fact_table f, &#13;
+patient_dimension p &#13;
+WHERE&#13;
+f.patient_surrogate_key = p.patient_surrogate_key&#13;
+AND acquisition_group != &apos;MISSING INFORMATION&apos;&#13;
+AND age_group != &apos;UNKNOWN&apos;&#13;
+GROUP BY&#13;
+(p.age_group, p.acquisition_group)</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>acquisition_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[acquisition_group]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>acquisition_group</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_224817BC4F3B4CAC971099A626FDA6DA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[age_group]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>age_group</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_224817BC4F3B4CAC971099A626FDA6DA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_224817BC4F3B4CAC971099A626FDA6DA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[rank]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>rank</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_224817BC4F3B4CAC971099A626FDA6DA]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Acquisition &amp; Age Group Vs Cases' datatype='table' name='[__tableau_internal_object_id__].[_224817BC4F3B4CAC971099A626FDA6DA]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Acquisition &amp; Age Group Vs Cases' id='_224817BC4F3B4CAC971099A626FDA6DA'>
+            <properties context=''>
+              <relation connection='postgres.01d1u7z03nrz4z19p3elk0xagzll' name='Custom SQL Query' type='text'>Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, &#13;
+RANK () OVER ( &#13;
+		PARTITION BY p.age_group&#13;
+		ORDER BY COUNT(*) DESC&#13;
+	) as rank&#13;
+FROM&#13;
+covid19_tracking_fact_table f, &#13;
+patient_dimension p &#13;
+WHERE&#13;
+f.patient_surrogate_key = p.patient_surrogate_key&#13;
+AND acquisition_group != &apos;MISSING INFORMATION&apos;&#13;
+AND age_group != &apos;UNKNOWN&apos;&#13;
+GROUP BY&#13;
+(p.age_group, p.acquisition_group)</relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+    <datasource caption='Cases VS PHU Location' inline='true' name='federated.11bp3bx0gd5f7w1b77g991hwqgqy' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='www.eecs.uottawa.ca' name='postgres.0psn4jj15jbbo411tfnam1vq3p2h'>
+            <connection authentication='username-password' class='postgres' dbname='group_5' one-time-sql='' port='15432' server='www.eecs.uottawa.ca' sslmode='require' username='lnguy042' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0psn4jj15jbbo411tfnam1vq3p2h' name='Custom SQL Query' type='text'>SELECT L.phu_name, SUM(F.resolved ::INT) AS total_cases_resolved, SUM(F.unresolved ::INT) AS total_cases_unresolved, SUM(F.fatal ::INT) AS total_cases_fatal, COUNT(P.patient_surrogate_key) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F &#13;
+INNER JOIN patient_dimension P ON F.patient_surrogate_key = P.patient_surrogate_key&#13;
+INNER JOIN phu_location_dimension L ON F.phu_location_surrogate_key = L.phu_location_surrogate_key&#13;
+GROUP BY L.phu_name</_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='postgres.0psn4jj15jbbo411tfnam1vq3p2h' name='Custom SQL Query' type='text'>SELECT L.phu_name, SUM(F.resolved ::INT) AS total_cases_resolved, SUM(F.unresolved ::INT) AS total_cases_unresolved, SUM(F.fatal ::INT) AS total_cases_fatal, COUNT(P.patient_surrogate_key) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F &#13;
+INNER JOIN patient_dimension P ON F.patient_surrogate_key = P.patient_surrogate_key&#13;
+INNER JOIN phu_location_dimension L ON F.phu_location_surrogate_key = L.phu_location_surrogate_key&#13;
+GROUP BY L.phu_name</_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>phu_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[phu_name]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>phu_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_367561B1D1344680B307729F7A6C9B54]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_resolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_resolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_resolved</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_367561B1D1344680B307729F7A6C9B54]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_unresolved</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_unresolved]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_unresolved</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_367561B1D1344680B307729F7A6C9B54]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases_fatal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases_fatal]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases_fatal</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_367561B1D1344680B307729F7A6C9B54]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_cases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_cases]</local-name>
+            <parent-name>[Custom SQL Query]</parent-name>
+            <remote-alias>total_cases</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[_367561B1D1344680B307729F7A6C9B54]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_367561B1D1344680B307729F7A6C9B54]' role='measure' type='quantitative' />
+      <drill-paths>
+        <drill-path name='province, city'>
+          <field>[province]</field>
+          <field>[city]</field>
+        </drill-path>
+      </drill-paths>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Custom SQL Query' id='_367561B1D1344680B307729F7A6C9B54'>
+            <properties context=''>
+              <relation connection='postgres.0psn4jj15jbbo411tfnam1vq3p2h' name='Custom SQL Query' type='text'>SELECT L.phu_name, SUM(F.resolved ::INT) AS total_cases_resolved, SUM(F.unresolved ::INT) AS total_cases_unresolved, SUM(F.fatal ::INT) AS total_cases_fatal, COUNT(P.patient_surrogate_key) AS total_cases&#13;
+FROM covid19_tracking_fact_table AS F &#13;
+INNER JOIN patient_dimension P ON F.patient_surrogate_key = P.patient_surrogate_key&#13;
+INNER JOIN phu_location_dimension L ON F.phu_location_surrogate_key = L.phu_location_surrogate_key&#13;
+GROUP BY L.phu_name</relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Highlight 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source type='sheet' worksheet='Cases Vs. Measures' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Measure Names' />
+        <param name='target' value='Cases Vs. Measures' />
+      </command>
+    </action>
+    <action caption='Highlight 2 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source type='sheet' worksheet='Cases Vs. Day &amp; Acquisition Type' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='phu_name' />
+        <param name='target' value='Cases Vs. Day &amp; Acquisition Type' />
+      </command>
+    </action>
+    <action caption='Highlight 3 (generated)' name='[Action3]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' />
+      <command command='tsc:brush'>
+        <param name='field-captions' value='Measure Names,phu_name' />
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Acquisition &amp; Age Group Vs Cases'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Acquisition &amp; Age Group Vs Cases' name='federated.0zm9ajp0mead8x1cw0x8t00rm7fi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0zm9ajp0mead8x1cw0x8t00rm7fi'>
+            <column datatype='string' name='[acquisition_group]' role='dimension' type='nominal' />
+            <column datatype='string' name='[age_group]' role='dimension' type='nominal' />
+            <column-instance column='[age_group]' derivation='Attribute' name='[attr:age_group:nk]' pivot='key' type='nominal' />
+            <column-instance column='[acquisition_group]' derivation='None' name='[none:acquisition_group:nk]' pivot='key' type='nominal' />
+            <column-instance column='[age_group]' derivation='None' name='[none:age_group:nk]' pivot='key' type='nominal' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[attr:age_group:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[none:acquisition_group:nk] / [federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[none:age_group:nk])</rows>
+        <cols>[federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[sum:total_cases:qk]</cols>
+      </table>
+      <simple-id uuid='{E5A7C44D-5671-413E-AF9E-816137C61A48}' />
+    </worksheet>
+    <worksheet name='Cases VS PHU Location'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cases VS PHU Location' name='federated.11bp3bx0gd5f7w1b77g991hwqgqy' />
+          </datasources>
+          <datasource-dependencies datasource='federated.11bp3bx0gd5f7w1b77g991hwqgqy'>
+            <column-instance column='[phu_name]' derivation='None' name='[none:phu_name:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[phu_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[sum:total_cases:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[sum:total_cases_fatal:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[sum:total_cases_resolved:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[sum:total_cases_unresolved:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[Multiple Values]</rows>
+        <cols>([federated.11bp3bx0gd5f7w1b77g991hwqgqy].[none:phu_name:nk] / [federated.11bp3bx0gd5f7w1b77g991hwqgqy].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{32CA0E18-1E58-47C0-A063-3D1A2F719F91}' />
+    </worksheet>
+    <worksheet name='Cases Vs. Day &amp; Acquisition Type'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Number of CC and CS Cases over the Weeks </run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cases vs Day and Acquisiton type' name='federated.1psgw1n0rje3u41bzztkt1d20icg (copy)' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1psgw1n0rje3u41bzztkt1d20icg (copy)'>
+            <column datatype='string' name='[acquisition_group]' role='dimension' type='nominal' />
+            <column datatype='date' name='[full_date]' role='dimension' type='ordinal' />
+            <column-instance column='[acquisition_group]' derivation='None' name='[none:acquisition_group:nk]' pivot='key' type='nominal' />
+            <column-instance column='[phu_name]' derivation='None' name='[none:phu_name:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[phu_name]' role='dimension' type='nominal' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+            <column-instance column='[full_date]' derivation='Week-Trunc' name='[twk:full_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[:Measure Names]'>
+            <groupfilter function='level-members' level='[:Measure Names]' />
+          </filter>
+          <slices>
+            <column>[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='font-size' value='8' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[none:phu_name:nk]' value='phu_name' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[none:phu_name:nk]' />
+              <text column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[none:acquisition_group:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[sum:total_cases:qk]</rows>
+        <cols>[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[twk:full_date:qk]</cols>
+      </table>
+      <simple-id uuid='{A34F8FAA-18AE-4B1B-8351-7F3D24DB6CCF}' />
+    </worksheet>
+    <worksheet name='Cases Vs. Measures'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cases vs Measure' name='federated.1psgw1n0rje3u41bzztkt1d20icg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1psgw1n0rje3u41bzztkt1d20icg'>
+            <_.fcp.ObjectModelTableType.true...column caption='Custom SQL Query' datatype='table' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[special_measure]' derivation='None' name='[none:special_measure:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[special_measure]' role='dimension' type='nominal' />
+            <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+            <_.fcp.ObjectModelTableType.false...column caption='Custom SQL Query' datatype='integer' name='[__tableau_internal_object_id__].[_FA4A42875CE74DB4B29F3CB3EF3F5693]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[__tableau_internal_object_id__].[cnt:_FA4A42875CE74DB4B29F3CB3EF3F5693:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' field-type='quantitative' max='13676.199749034604' min='155.4970440446935' range-type='fixed' scope='cols' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' value='177' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' />
+            </encodings>
+            <reference-line axis-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' enable-instant-analytics='true' formula='total' id='refline1' label-type='automatic' scope='per-cell' value-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' z-order='1' />
+            <reference-line axis-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' enable-instant-analytics='false' formula='sum' id='refline2' label-type='value' scope='per-cell' value-column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]' z-order='2' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='753' />
+                <format attr='maxwidth' value='753' />
+                <format attr='minheight' value='80' />
+                <format attr='maxheight' value='80' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]</rows>
+        <cols>[federated.1psgw1n0rje3u41bzztkt1d20icg].[Multiple Values]</cols>
+      </table>
+      <simple-id uuid='{EBA177DF-05F2-4C5A-9EB0-966D0A4A0DB4}' />
+    </worksheet>
+    <worksheet name='Cases Vs. Measures (2)'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cases vs Measure' name='federated.1psgw1n0rje3u41bzztkt1d20icg' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1psgw1n0rje3u41bzztkt1d20icg'>
+            <column-instance column='[special_measure]' derivation='None' name='[none:special_measure:nk]' pivot='key' type='nominal' />
+            <column datatype='string' name='[special_measure]' role='dimension' type='nominal' />
+            <column-instance column='[total_cases_fatal]' derivation='Sum' name='[sum:total_cases_fatal:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_resolved]' derivation='Sum' name='[sum:total_cases_resolved:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases_unresolved]' derivation='Sum' name='[sum:total_cases_unresolved:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases_fatal]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_resolved]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[total_cases_unresolved]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Stage 2&quot;</bucket>
+              <bucket>&quot;Stage 2 Modified&quot;</bucket>
+              <bucket>&quot;Stage 3&quot;</bucket>
+              <bucket>&quot;Stage 3 Modified&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+            <format attr='fill-above' id='refline1' value='#00000000' />
+            <format attr='fill-below' id='refline1' value='#00000000' />
+            <format attr='fill-above' id='refline2' value='#00000000' />
+            <format attr='fill-below' id='refline2' value='#00000000' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='col-width' field='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' value='70' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' value='Special Measure'>
+              <formatted-text>
+                <run>Special Measure</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' />
+            </encodings>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows />
+        <cols>([federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_resolved:qk] + ([federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_fatal:qk] + [federated.1psgw1n0rje3u41bzztkt1d20icg].[sum:total_cases_unresolved:qk]))</cols>
+      </table>
+      <simple-id uuid='{7E3727C6-9844-4EDD-837D-7104806FAB82}' />
+    </worksheet>
+    <worksheet name='Mobility Levels Vs. Sub Region (Per Month)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Mobility Levels vs. Cities' name='federated.1bgr3li0mge86t1gv92x708mf8fh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1bgr3li0mge86t1gv92x708mf8fh'>
+            <column datatype='date' name='[full_date]' role='dimension' type='ordinal' />
+            <column-instance column='[subregion]' derivation='None' name='[none:subregion:nk]' pivot='key' type='nominal' />
+            <column datatype='real' name='[parks]' role='measure' type='quantitative' />
+            <column datatype='real' name='[residential]' role='measure' type='quantitative' />
+            <column datatype='real' name='[retail_and_recreation]' role='measure' type='quantitative' />
+            <column datatype='string' name='[subregion]' role='dimension' type='nominal' />
+            <column-instance column='[parks]' derivation='Sum' name='[sum:parks:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[residential]' derivation='Sum' name='[sum:residential:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[retail_and_recreation]' derivation='Sum' name='[sum:retail_and_recreation:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transit_stations]' derivation='Sum' name='[sum:transit_stations:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[workplaces]' derivation='Sum' name='[sum:workplaces:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+            <column datatype='real' name='[transit_stations]' role='measure' type='quantitative' />
+            <column-instance column='[full_date]' derivation='Week-Trunc' name='[twk:full_date:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[workplaces]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:parks:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:residential:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:retail_and_recreation:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:transit_stations:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:workplaces:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1bgr3li0mge86t1gv92x708mf8fh].[Multiple Values]' scope='rows' value='Mobility Levels' />
+            <format attr='title' class='0' field='[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk]' scope='rows' value='Total Cases' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' value='Measure Types'>
+              <formatted-text>
+                <run>Measure Types</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1bgr3li0mge86t1gv92x708mf8fh].[Multiple Values]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Sub Region: </run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[none:subregion:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Date: </run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[twk:full_date:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]>: ]]></run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[Multiple Values]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Sub Region: </run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[none:subregion:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Date: </run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[twk:full_date:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Cases: </run>
+                <run bold='true'><![CDATA[<[federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+          </pane>
+        </panes>
+        <rows>([federated.1bgr3li0mge86t1gv92x708mf8fh].[Multiple Values] + [federated.1bgr3li0mge86t1gv92x708mf8fh].[sum:total_cases:qk])</rows>
+        <cols>([federated.1bgr3li0mge86t1gv92x708mf8fh].[none:subregion:nk] * [federated.1bgr3li0mge86t1gv92x708mf8fh].[twk:full_date:qk])</cols>
+      </table>
+      <simple-id uuid='{AC7A2D88-7F38-4801-992B-1028CAC2FCDF}' />
+    </worksheet>
+    <worksheet name='Top-5 Total Cases on a Date'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Top-5 for Total Cases on a Date</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Top-N Query' name='federated.0gmwbeh1q4qq5v1ckdii11qtraj4' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0gmwbeh1q4qq5v1ckdii11qtraj4'>
+            <column datatype='date' name='[full_date]' role='dimension' type='ordinal' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[full_date]' derivation='Day-Trunc' name='[tdy:full_date:ok]' pivot='key' type='ordinal' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[sum:total_cases:qk]' />
+              <text column='[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[tdy:full_date:ok]' />
+              <color column='[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[tdy:full_date:ok]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>Date: </run>
+                <run bold='true'><![CDATA[<[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[tdy:full_date:ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Cases: </run>
+                <run bold='true'><![CDATA[<[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[sum:total_cases:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run fontsize='8'><![CDATA[<[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[tdy:full_date:ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontsize='8'><![CDATA[<[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[sum:total_cases:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='false' />
+                <format attr='mark-labels-mode' value='all' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4A8C7820-7DB9-4737-A730-17C34E05AC6C}' />
+    </worksheet>
+    <worksheet name='Total Vs. Moving Average'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Total Cases per Day</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Cases Vs. Moving Avg' name='federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)'>
+            <column datatype='date' name='[full_date]' role='dimension' type='ordinal' />
+            <column datatype='real' name='[moving_average]' role='measure' type='quantitative' />
+            <column-instance column='[moving_average]' derivation='Sum' name='[sum:moving_average:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_cases]' derivation='Sum' name='[sum:total_cases:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[full_date]' derivation='Day-Trunc' name='[tdy:full_date:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[total_cases]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]' scope='rows' value='15 Day Moving Average' />
+            <format attr='title' class='0' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk]' scope='rows' value='Total Cases' />
+            <encoding attr='space' class='0' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-color' id='refline0' value='#000000' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' value=''>
+              <formatted-text />
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:moving_average:qk] + [federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[sum:total_cases:qk])</rows>
+        <cols>[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[tdy:full_date:qk]</cols>
+      </table>
+      <simple-id uuid='{4E2E9C6B-99DA-461C-A3ED-1FA8B3A4A7F9}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='34510' id='17' name='Total Vs. Moving Average' w='44135' x='192' y='65490' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='15686' id='18' name='Total Vs. Moving Average' pane-specification-id='1' param='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' w='18462' x='7308' y='69804' />
+        <zone h='16667' id='80' name='Cases Vs. Measures (2)' w='51827' x='0' y='2549' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='5294' id='81' name='Cases Vs. Measures (2)' pane-specification-id='3' param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' w='34712' x='673' y='22353' />
+        <zone h='36863' id='82' name='Mobility Levels Vs. Sub Region (Per Month)' w='44423' x='288' y='29216' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='16078' id='83' name='Mobility Levels Vs. Sub Region (Per Month)' pane-specification-id='2' param='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' w='8558' x='39712' y='22353' />
+        <zone h='38039' id='84' name='Cases Vs. Measures' w='48269' x='51827' y='588' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='4706' id='85' name='Cases Vs. Measures' pane-specification-id='2' param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' w='50769' x='48846' y='37059' />
+        <zone h='59608' id='86' name='Cases Vs. Day &amp; Acquisition Type' w='54327' x='46058' y='40196' />
+        <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='26078' id='87' name='Cases Vs. Day &amp; Acquisition Type' pane-specification-id='0' param='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[none:phu_name:nk]' w='21635' x='55000' y='46863' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='12157' id='22' w='21731' x='54615' y='71569'>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Tableau Medium'>Labels</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#555555'>CC</run>
+            <run fontcolor='#555555'>: Close Contact</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#555555'>CS</run>
+            <run fontcolor='#555555'>: Community Spread</run>
+          </formatted-text>
+        </zone>
+      </zones>
+      <simple-id uuid='{48714B70-30DA-4F1E-B94D-2F0A60185897}' />
+    </dashboard>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='7' param='horz' w='98400' x='800' y='1000'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98000' id='5' w='82700' x='800' y='1000'>
+              <zone h='98000' id='3' name='Acquisition &amp; Age Group Vs Cases' w='82700' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='157' h='98000' id='6' is-fixed='true' param='vert' w='15700' x='83500' y='1000'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='27375' id='8' name='Acquisition &amp; Age Group Vs Cases' pane-specification-id='0' param='[federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[attr:age_group:nk]' w='15700' x='83500' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='2' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='84000' id='1' param='vert' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{DAF0A770-F63E-43C3-9C0C-15769E230319}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='193'>
+    <window class='worksheet' name='Acquisition &amp; Age Group Vs Cases'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0zm9ajp0mead8x1cw0x8t00rm7fi].[attr:age_group:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{15EFCE7C-04B3-431C-8444-65AE6856602C}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Cases VS PHU Location'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.11bp3bx0gd5f7w1b77g991hwqgqy].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1D460513-5D0D-4623-9D27-3D957BCE16D2}' />
+    </window>
+    <window class='worksheet' name='Cases Vs. Measures'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F3436F63-53C8-4525-82E5-8272B2C872AA}' />
+    </window>
+    <window class='worksheet' name='Cases Vs. Measures (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='3' param='[federated.1psgw1n0rje3u41bzztkt1d20icg].[none:special_measure:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2B21AE8F-5B66-4356-B4CF-10AF94893CE0}' />
+    </window>
+    <window class='worksheet' name='Cases Vs. Day &amp; Acquisition Type'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy)].[none:phu_name:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A746B45A-4F56-459E-A671-E637A1FAC15D}' />
+    </window>
+    <window class='worksheet' name='Total Vs. Moving Average'>
+      <cards>
+        <edge name='left'>
+          <strip size='100'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.1psgw1n0rje3u41bzztkt1d20icg (copy 2)].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{83221954-6C46-4622-B5FB-72739989B06F}' />
+    </window>
+    <window class='worksheet' name='Top-5 Total Cases on a Date'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0gmwbeh1q4qq5v1ckdii11qtraj4].[tdy:full_date:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{15E71D50-D4FC-45BF-8D49-72021A7119CD}' />
+    </window>
+    <window class='worksheet' name='Mobility Levels Vs. Sub Region (Per Month)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.1bgr3li0mge86t1gv92x708mf8fh].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{54F15EC8-8A9A-477A-B1F1-1CDA3DA32D86}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Cases Vs. Day &amp; Acquisition Type'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Cases Vs. Measures' />
+        <viewpoint name='Cases Vs. Measures (2)' />
+        <viewpoint name='Mobility Levels Vs. Sub Region (Per Month)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Vs. Moving Average'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <device-preview visible='true' />
+      <simple-id uuid='{53097D2E-C702-41C4-902A-AC7C6145E2D4}' />
+    </window>
+    <window class='dashboard' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Acquisition &amp; Age Group Vs Cases' />
+      </viewpoints>
+      <active id='-1' />
+      <device-preview visible='true' />
+      <simple-id uuid='{D532A84F-5B19-4F21-A949-43108FC9EE43}' />
+    </window>
+  </windows>
+</workbook>
