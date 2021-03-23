@@ -268,14 +268,14 @@ WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogat
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.precipitation > 0
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.precipitation)
 
-/*Dice Query (Total Cases for Sub Region and Sunny Day)*/
+/*Dice Query (Total Cases for Sub Region and Sunny Days)*/
 SELECT M.subregion, M.parks, M.transit_stations, W.daily_high_temperature, COUNT(*) AS total_cases
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, weather_dimension as W
 WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogate_key = W.weather_surrogate_key 
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.daily_low_temperature >= 17
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.daily_high_temperature)
 
-/*Combined OLAP Operations Query (Outcomes and Weather Conditions for Cold days with Precipitation)*/
+/*Combined OLAP Operations Query (Outcomes and Weather Conditions for Cold Days with Precipitation)*/
 SELECT M.subregion, W.daily_low_temperature, W.precipitation, SUM(F.resolved::INT) AS total_resolved_cases, 
 SUM(F.unresolved::INT) AS total_unresolved_cases, SUM(F.fatal::INT) AS total_fatal_cases
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, weather_dimension as W
@@ -288,14 +288,6 @@ SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_sta
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D
 WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND
 M.subregion in ('Ottawa Division', 'Toronto Division')
-GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)
-ORDER BY D.full_date
-
--- Week in Year = 41 (range)
-SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential, COUNT(*) AS total_cases
-FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D
-WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND
-M.subregion in ('Ottawa Division', 'Toronto Division') AND D.week_in_year = 41
 GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)
 ORDER BY D.full_date
 
