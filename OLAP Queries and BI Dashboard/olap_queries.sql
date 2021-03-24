@@ -341,3 +341,50 @@ WHERE F.onset_date_surrogate_key = D.date_surrogate_key
 GROUP BY D.full_date
 ORDER BY total_fatal_cases ASC
 LIMIT 5
+
+/* Le's Queries */
+
+/* 1-a-ii */
+SELECT D.Day, D.Week_in_Year, D.Month, D.Year, SUM(F.resolved::INT) AS total_resolve_cases
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key AND week_in_year = 41
+GROUP BY (D.year, D.month, D.Week_in_Year, D.day)
+ORDER BY D.year, D.month, D.Week_in_Year, D.day
+
+/* 1-b-i */
+SELECT L.phu_name, SUM(F.resolved ::INT) AS total_cases_resolved, SUM(F.unresolved ::INT) AS total_cases_unresolved, SUM(F.fatal ::INT) AS total_cases_fatal, COUNT(P.patient_surrogate_key) AS total_cases
+FROM covid19_tracking_fact_table AS F 
+INNER JOIN patient_dimension P ON F.patient_surrogate_key = P.patient_surrogate_key
+INNER JOIN phu_location_dimension L ON F.phu_location_surrogate_key = L.phu_location_surrogate_key
+WHERE phu_name = 'York Region Public Health Services'
+GROUP BY L.phu_name
+
+/* 1-d-iv */
+SELECT D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential, COUNT(*) AS total_cases
+FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, onset_date_dimension AS D
+WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.onset_date_surrogate_key = D.date_surrogate_key AND
+M.subregion in ('Ottawa Division', 'Toronto Division')
+GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)
+ORDER BY D.full_date
+
+/* 2-b-iv */
+SELECT D.month, D.week_in_year, SUM(F.resolved ::INT) AS total_cases_resolved, RANK() OVER (PARTITION BY D.month ORDER BY SUM(F.resolved ::INT) DESC)
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key
+GROUP BY (D.month, D.week_in_year)
+
+/* acquisition & age group vs total cases*/
+Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, 
+RANK () OVER ( 
+		PARTITION BY p.age_group
+		ORDER BY COUNT(*) DESC
+	) as rank
+FROM
+covid19_tracking_fact_table f, 
+patient_dimension p 
+WHERE
+f.patient_surrogate_key = p.patient_surrogate_key
+AND acquisition_group != 'MISSING INFORMATION'
+AND age_group != 'UNKNOWN'
+GROUP BY
+(p.age_group, p.acquisition_group)
