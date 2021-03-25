@@ -21,7 +21,7 @@ WHERE F.phu_location_surrogate_key = L.phu_location_surrogate_key
 GROUP BY ROLLUP(L.city)
 ORDER BY L.city
 
-/*Roll Up Query (Total Fatal Cases rollup to Age Group, Gender, Region and City)*/
+/*Roll Up Query (Total Fatal Cases rollup to Region and City by Gender and Age Group)*/
 SELECT L.city, I.age_group, I.gender, (CASE WHEN L.city = 'Ottawa' THEN 'Ottawa' ELSE 'Toronto' END) AS region, SUM(F.fatal::INT) AS total_fatal_cases
 FROM covid19_tracking_fact_table AS F, phu_location_dimension AS L, patient_dimension as I
 WHERE F.phu_location_surrogate_key = L.phu_location_surrogate_key AND F.patient_surrogate_key = I.patient_surrogate_key
