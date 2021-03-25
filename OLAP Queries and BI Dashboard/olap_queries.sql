@@ -53,14 +53,14 @@ l.phu_name
 
 /*c. Dice - 2 Queries*/
 
-/* Dice Query (Total Unresolved Cases for Sub Region and Precipitation)*/
+/*Dice Query (Total Unresolved Cases for Sub Region and Precipitation)*/
 SELECT M.subregion, M.parks, M.transit_stations, W.precipitation, SUM(F.unresolved::INT) AS total_unresolved_cases
 FROM covid19_tracking_fact_table AS F, mobility_dimension AS M, weather_dimension as W
 WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogate_key = W.weather_surrogate_key 
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.precipitation > 0
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.precipitation)
 
-/* Dice Query (Total Fatal Cases for PHU City Locations of Mississauga and Ottawa in July and August)*/
+/*Dice Query (Total Fatal Cases for PHU City Locations of Mississauga and Ottawa in July and August)*/
 SELECT
 l.phu_name,
 COUNT(p.patient_surrogate_key) AS total_cases_fatal
@@ -129,7 +129,7 @@ LIMIT 5
 
 /*b. Windowing Query*/
 
-/*Windowing Query (Total Cases partitioned by age_group, ranked by total, by acquisition group)*/
+/*Windowing Query (Total Cases partitioned by age_group, ranked by total and by acquisition group)*/
 Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, 
 RANK () OVER ( 
 		PARTITION BY p.age_group
