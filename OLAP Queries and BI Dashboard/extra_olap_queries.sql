@@ -82,18 +82,9 @@ GROUP BY D.full_date
 ORDER BY total_fatal_cases ASC
 LIMIT 5
 
-/*Acquisition & Age Group Vs. Total Cases*/
-Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, 
-RANK () OVER ( 
-		PARTITION BY p.age_group
-		ORDER BY COUNT(*) DESC
-	) as rank
-FROM
-covid19_tracking_fact_table f, 
-patient_dimension p 
-WHERE
-f.patient_surrogate_key = p.patient_surrogate_key
-AND acquisition_group != 'MISSING INFORMATION'
-AND age_group != 'UNKNOWN'
-GROUP BY
-(p.age_group, p.acquisition_group)
+/*Windowing Query (Total Resolved Cases rank within the Weeks of the Four Selected Monthes)*/
+SELECT D.quarter, TO_CHAR(TO_DATE(D.month::text, 'MM'), 'Month') AS Month, D.week_in_year, SUM(F.resolved ::INT) AS total_cases_resolved, 
+RANK() OVER (PARTITION BY D.month ORDER BY SUM(F.resolved ::INT) DESC)
+FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D
+WHERE F.onset_date_surrogate_key = D.date_surrogate_key
+GROUP BY (D.quarter, D.month, D.week_in_year)
