@@ -60,7 +60,7 @@ WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogat
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.precipitation > 0
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.precipitation)
 
-/* Dice Query (Total Fatal Cases for PHU City Locations of Missauga and Ottawa in July and August)*/
+/* Dice Query (Total Fatal Cases for PHU City Locations of Mississauga and Ottawa in July and August)*/
 SELECT
 l.phu_name,
 COUNT(p.patient_surrogate_key) AS total_cases_fatal
@@ -129,7 +129,7 @@ LIMIT 5
 
 /*b. Windowing Query*/
 
-/*Windowing Query (Total Cases partitioned by age_group, ranked by total by acquisition group)*/
+/*Windowing Query (Total Cases partitioned by age_group, ranked by total, by acquisition group)*/
 Select p.acquisition_group, p.age_group, COUNT(*) as total_cases, 
 RANK () OVER ( 
 		PARTITION BY p.age_group
