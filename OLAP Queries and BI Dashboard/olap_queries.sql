@@ -1,6 +1,6 @@
 /*Part 1. Standard OLAP Operations - 9 Queries*/
 
-/*a. Drill down and roll up - 2 Queries*/
+/*a. Drill Down and Roll Up - 2 Queries*/
 
 /*Drill Down Query (Positive Cases & October 2020)*/
 SELECT D.year, D.week_in_year, D.month, D.day, SUM(F.unresolved::INT) AS total_unresolved_cases
