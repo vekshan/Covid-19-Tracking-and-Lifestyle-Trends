@@ -1,6 +1,6 @@
 /*Part 1. Standard OLAP Operations - 9 Queries*/
 
-/*a. Drill down and roll up - 2 Queries Total*/
+/*a. Drill down and roll up - 2 Queries*/
 
 /*Drill Down Query (Positive Cases & October 2020)*/
 SELECT D.year, D.week_in_year, D.month, D.day, SUM(F.unresolved::INT) AS total_unresolved_cases
@@ -51,7 +51,6 @@ s.title = 'Stage 3 Modified'
 GROUP BY
 l.phu_name
 
-
 /*c. Dice - 2 Queries*/
 
 /* Dice Query (Total Unresolved Cases for Sub Region and Precipitation)*/
@@ -61,7 +60,7 @@ WHERE F.mobility_surrogate_key = M.mobility_surrogate_key AND F.weather_surrogat
 AND M.subregion in ('Ottawa Division', 'Toronto Division') AND W.precipitation > 0
 GROUP BY (M.subregion, M.parks, M.transit_stations, W.precipitation)
 
-/* Dice Query (Total Fatal Cases for PHU City LOcations of Missauga and Ottawa in July and August)*/
+/* Dice Query (Total Fatal Cases for PHU City Locations of Missauga and Ottawa in July and August)*/
 SELECT
 l.phu_name,
 COUNT(p.patient_surrogate_key) AS total_cases_fatal
@@ -87,7 +86,7 @@ d.month IN (7,8)
 GROUP BY
 l.phu_name
 
-/*d. Combining OLAP operations - 3 Queries*/
+/*d. Combining OLAP Operations - 3 Queries*/
 
 /*Combined OLAP Operations Query (Outcomes and Weather Conditions for Cold Days with Precipitation)*/
 SELECT M.subregion, W.daily_low_temperature, W.precipitation, SUM(F.resolved::INT) AS total_resolved_cases, 
@@ -116,7 +115,7 @@ M.subregion in ('Ottawa Division', 'Toronto Division')
 GROUP BY (D.full_date, M.subregion, M.retail_and_recreation, M.parks, M.transit_stations, M.workplaces, M.residential)
 ORDER BY D.full_date
 
-/*Part 2. Explorative Operations - 3 Queries Total*/
+/*Part 2. Explorative Operations - 3 Queries*/
 
 /*a. Iceberg Query*/
 
@@ -130,7 +129,7 @@ LIMIT 5
 
 /*b. Windowing Query*/
 
-/*Windowing Query*/
+/*Windowing Query (Total Resolved Cases rank within the Weeks of the Four Selected Monthes)*/
 SELECT D.quarter, TO_CHAR(TO_DATE(D.month::text, 'MM'), 'Month') AS Month, D.week_in_year, SUM(F.resolved ::INT) AS total_cases_resolved, RANK() OVER (PARTITION BY D.month ORDER BY SUM(F.resolved ::INT) DESC)
 FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D
 WHERE F.onset_date_surrogate_key = D.date_surrogate_key
@@ -138,7 +137,7 @@ GROUP BY (D.quarter, D.month, D.week_in_year)
 
 /*c. Using the Window Clause Query*/
 
-/*Number of Resolved Cases on a particular date compared to a 14 Day Moving Average*/
+/*Window Clause Query (Number of Resolved Cases on a Particular Date compared to a 14 Day Moving Average)*/
 SELECT
 d.full_date,
 TO_CHAR(TO_DATE(d.month::text, 'MM'), 'Month') AS onset_month,
@@ -161,9 +160,3 @@ WINDOW W AS
 (ORDER BY d.full_date
 RANGE BETWEEN  '7 days' PRECEDING
 AND '7 days' FOLLOWING)
-
-
-
-
-
-

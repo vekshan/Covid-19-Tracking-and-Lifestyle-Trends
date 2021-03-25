@@ -1,4 +1,4 @@
-/*Extra Queries made for Part 1, 2 & 3*/
+/*Extra Queries made for Parts 1, 2 & 3*/
 
 /*Drill Down Query (Positive Cases & October 2020)*/
 SELECT D.full_date, COALESCE(sum(CASE WHEN F.unresolved THEN 1 ELSE 0 END), 0) as total_unresolved_cases
