@@ -74,7 +74,7 @@ GROUP BY D.full_date
 ORDER BY total_resolved_cases ASC
 LIMIT 5
 
-/*Iceberg Query (Bottom-N for Total Resolved Cases on a Date)*/
+/*Iceberg Query (Bottom-N for Total Fatal Cases on a Date)*/
 SELECT D.full_date, SUM(F.fatal::INT) AS total_fatal_cases
 FROM covid19_tracking_fact_table AS F, onset_date_dimension AS D
 WHERE F.onset_date_surrogate_key = D.date_surrogate_key
